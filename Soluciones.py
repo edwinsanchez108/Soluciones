@@ -12,7 +12,7 @@ pm = {
     "HCl" : 38
     }
 
-#Falta el diccionario de pureza ( la de la etiqueta comercial, o se puede dejar abierta)
+#Falta el diccionario de pureza ( la de la etiqueta comercial, o se puede dejar abierta), eqgramo, densidad
 #diccionario o base de datos
 #Para algunos calculos se necesita la densidad y otros datos
 
@@ -20,18 +20,38 @@ pm = {
 #formula, pedir unidades
 #hacer igual para las demas opciones
 
+
+###
 def molaridad(volumen,pesomolecular,nombrer):
     concentracion=int(input("Que concentracion [moles/L] "))
     cmolaridad=volumen*concentracion*pesomolecular #*pureza
-    print ("se requieren de " + str(cmolaridad) + " g de " +str(nombrer))
+    print ("se requieren " + str(cmolaridad) + " g de " +str(nombrer))
     
+def molalidad(volumen,pesomolecular,nombrer):
+    concentracion=int(input("Que concentración [mol soluto/Kg de solvente]"))
+    cmolalidad=volumen*0.001*concentracion*pm #*pureza
+    print ("Se requieren " + str(cmolalidad) + " g de " +str(nombrer))
+
+def normalidad (volumen,pesomolecular,nombrer):
+    concentracion=int(input("Que concentración [equivalente gramo / L de soliución] [N]"))
+    cnormalidad = volumen*concentracion*pesomolecular #*pureza*eqgramo
+    print ("Se requieren " + str(cnormalidad) + " g de " +str(nombrer))
+
+#def pesopeso():
+
+#def pesovolumen():
+
+#def volumenvolumen():
+
+####
+
 def tipos_de_concentracion(tconcentracion,volumen,pesomolecular,nombrer):
     if tconcentracion == 1:
-        molaridad(volumen,pesomolecular,nombrer) #pm
-    #elif concentracion == 2:
-    #    molalidad ()
-    #elif concentracion == 3:
-    #    normalidad()
+        molaridad(volumen,pesomolecular,nombrer)
+    elif tconcentracion == 2:
+        molalidad (volumen,pesomolecular,nombrer) #densidad, falta llamar el dato
+    elif tconcentracion == 3:
+        normalidad(volumen,pesomolecular,nombrer) #equivalente gramo
     #elif concentracion == 4:
     #    pesopeso()
     #elif concentracion == 5:

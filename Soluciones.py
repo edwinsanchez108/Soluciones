@@ -1,9 +1,11 @@
+#Para qué importas random y string?
+
 import random
 import string
 # pandas
 
 
-nombrereactivo ={
+nombre_reactivo ={
     "NaOH" : "Hidroxido de sodio",
     "HCl" : "Acido clorhidrico"
 }
@@ -12,22 +14,28 @@ pm = {
     "HCl" : 38
     }
 
-#Falta el diccionario de pureza ( la de la etiqueta comercial, o se puede dejar abierta)
-#diccionario o base de datos
-#Para algunos calculos se necesita la densidad y otros datos
+"""
+Falta:
+- Diccionario de pureza (basado en etiqueta o ingresa por el usuario)
+- Para algunos cálculo se necesita densidad y otros datos
+"""
 
 #dilucion():
 #formula, pedir unidades
 #hacer igual para las demas opciones
+"""
+Documentar cada variable
+"""
 
-def molaridad(volumen,pesomolecular,nombrer):
-    concentracion=int(input("Que concentracion [moles/L] "))
-    cmolaridad=volumen*concentracion*pesomolecular #*pureza
+def molaridad(volumen,peso_molecular,nombrer):
+    concentracion: int= (input("Que concentracion [moles/L] "))
+    cmolaridad=volumen*concentracion*peso_molecular #*pureza
     print ("se requieren de " + str(cmolaridad) + " g de " +str(nombrer))
+
     
-def tipos_de_concentracion(tconcentracion,volumen,pesomolecular,nombrer):
+def tipos_de_concentracion(tconcentracion,volumen,peso_molecular,nombrer):
     if tconcentracion == 1:
-        molaridad(volumen,pesomolecular,nombrer) #pm
+        molaridad(volumen,peso_molecular,nombrer) #pm
     #elif concentracion == 2:
     #    molalidad ()
     #elif concentracion == 3:
@@ -39,21 +47,21 @@ def tipos_de_concentracion(tconcentracion,volumen,pesomolecular,nombrer):
     #elif concentracion == 6:
     #    volumenvolumen()
     else:
-        Er=input("Opcion no valida")  
+        Er=input("Opcion no valida")  # Las variables en Python nunca empiezan por mayúsculas
 
 def solucion():
-    volumen=int(input("Que volumen desea preparar [L]"))
-    reactivo=str(input("Formula del reactivo que va trabajar?"))
-    if reactivo in nombrereactivo: #Verificacion del reactivo en el diccionario
-        nombrer=(nombrereactivo.get(reactivo))
-        pesomolecular=(pm.get(reactivo)) #Falta agregar pureza y lso demas datos, los buscadores deben estar en una función
+    volumen: int= (input("Que volumen desea preparar [L]"))
+    reactivo: str= (input("Formula del reactivo que va trabajar?"))
+    if reactivo in nombre_reactivo: #Verificacion del reactivo en el diccionario
+        nombrer=(nombre_reactivo.get(reactivo))
+        peso_molecular=(pm.get(reactivo)) #Falta agregar pureza y lso demas datos, los buscadores deben estar en una función
         #pm, pureza, densidad.
     else:
         print("No se encontró el reactivo")
         #nombrer=str(input("nombre del reactivo")) #Se debe crear la función solucion rápida (manual) para correrla en todos los tipos de concentraciones
         #nombrereactivo[reactivo] = (nombrer)
            
-    tconcentracion=int(input("""Que tipo de concentracion
+    tconcentracion: int= (input("""Que tipo de concentracion
     1- Molaridad
     2- Molalidad
     3- Normalidad
@@ -62,7 +70,7 @@ def solucion():
     6- % volumen/volumen
     """))
 
-    tipos_de_concentracion(tconcentracion,volumen,pesomolecular,nombrer) #nombre de reactivo, pm, pureza
+    tipos_de_concentracion(tconcentracion,volumen,peso_molecular,nombrer) #nombre de reactivo, pm, pureza
 
 def opciones(option):
     
@@ -89,8 +97,8 @@ def run():
     2 - Dilucion
     3 - Estandarizacion
     4 - Conversor de concentraciones
-    3 - Ver lista de compuestos guardados
-    4 - Ver creditos
+    5 - Ver lista de compuestos guardados
+    6 - Ver creditos
         ****_
     """
     option=int(input(menu))
